@@ -1,0 +1,98 @@
+name: Main Analysis
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Formula/*.rb"
+      - ".github/workflows/main-analysis.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "Formula/*.rb"
+      - ".github/workflows/main-analysis.yml"
+  workflow_dispatch:
+
+jobs:
+  audit:
+    name: Audit Formulas
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Tap repository
+        run: |
+          mkdir -p "$(brew --repository)/Library/Taps/ericodx"
+          ln -s "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/ericodx/homebrew-tools"
+
+      - name: Get changed formulas
+        id: changed
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            FORMULAS=$(git diff --name-only --diff-filter=AM ${{ github.event.pull_request.base.sha }} ${{ github.sha }} -- 'Formula/*.rb' | xargs -I {} basename {} .rb | tr '\n' ' ')
+          else
+            FORMULAS=$(ls Formula/*.rb 2>/dev/null | xargs -I {} basename {} .rb | tr '\n' ' ' || echo "")
+          fi
+          echo "formulas=$FORMULAS" >> $GITHUB_OUTPUT
+          echo "Found formulas: $FORMULAS"
+
+      - name: Audit formulas
+        if: steps.changed.outputs.formulas != ''
+        run: |
+          for formula in ${{ steps.changed.outputs.formulas }}; do
+            echo "::group::Auditing $formula"
+            brew audit --strict --online "ericodx/tools/$formula"
+            echo "::endgroup::"
+          done
+
+      - name: Style check
+        if: steps.changed.outputs.formulas != ''
+        run: |
+          for formula in ${{ steps.changed.outputs.formulas }}; do
+            echo "::group::Style check $formula"
+            brew style "ericodx/tools/$formula"
+            echo "::endgroup::"
+          done
+
+  test:
+    name: Test Formulas
+    needs: audit
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Tap repository
+        run: |
+          mkdir -p "$(brew --repository)/Library/Taps/ericodx"
+          ln -s "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/ericodx/homebrew-tools"
+
+      - name: Get changed formulas
+        id: changed
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            FORMULAS=$(git diff --name-only --diff-filter=AM ${{ github.event.pull_request.base.sha }} ${{ github.sha }} -- 'Formula/*.rb' | xargs -I {} basename {} .rb | tr '\n' ' ')
+          else
+            FORMULAS=$(ls Formula/*.rb 2>/dev/null | xargs -I {} basename {} .rb | tr '\n' ' ' || echo "")
+          fi
+          echo "formulas=$FORMULAS" >> $GITHUB_OUTPUT
+
+      - name: Install and test formulas
+        if: steps.changed.outputs.formulas != ''
+        run: |
+          for formula in ${{ steps.changed.outputs.formulas }}; do
+            echo "::group::Installing $formula"
+            brew install --build-from-source "ericodx/tools/$formula"
+            echo "::endgroup::"
+
+            echo "::group::Testing $formula"
+            brew test "ericodx/tools/$formula"
+            echo "::endgroup::"
+          done

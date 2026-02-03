@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+
+# Ruby tooling
+.bundle/
+vendor/bundle/
+
+# Temporary files
+*.log
+*.tmp
+.claude/

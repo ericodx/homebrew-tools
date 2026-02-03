@@ -1,0 +1,19 @@
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+
+# Homebrew formulas don't need frozen string literal
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Homebrew formulas don't need class documentation
+Style/Documentation:
+  Enabled: false
+
+# Homebrew formula filenames use dashes, not matching class names
+Naming/FileName:
+  Enabled: false
+
+# Homebrew uses double quotes by convention
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
