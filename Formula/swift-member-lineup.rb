@@ -1,8 +1,8 @@
 class SwiftMemberLineup < Formula
   desc "Reorder Swift type members without rewriting code"
   homepage "https://github.com/ericodx/swift-member-lineup"
-  url "https://github.com/ericodx/swift-member-lineup/releases/download/v1.0.0/swift-member-lineup-v1.0.0-macos.tar.gz"
-  sha256 "8ecb2aa326272b5c909f8fb77bbfb7c551e8525b00e6872cc304bf2665026c0f"
+  url "https://github.com/ericodx/swift-member-lineup/releases/download/v1.1.0/swift-member-lineup-v1.1.0-macos.tar.gz"
+  sha256 "3bec29920d5560d5fdd175edf773c9dfc8f5750c356336f75e88fc01cfd43d5c"
   license "BSD-3-Clause"
 
   livecheck do
