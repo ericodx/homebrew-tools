@@ -1,4 +1,4 @@
-class SwiftMemberLineUp < Formula
+class SwiftMemberLineup < Formula
   desc "Reorder Swift type members without rewriting code"
   homepage "https://github.com/ericodx/swift-member-lineup"
   url "https://github.com/ericodx/swift-member-lineup/releases/download/v1.0.0/swift-member-lineup-v1.0.0-macos.tar.gz"
