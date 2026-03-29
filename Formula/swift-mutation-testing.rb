@@ -1,4 +1,4 @@
-class SwiftCpd < Formula
+class SwiftMutationTesting < Formula
   desc "Find untested behavior in Swift codebases"
   homepage "https://github.com/ericodx/swift-mutation-testing"
   url "https://github.com/ericodx/swift-mutation-testing/releases/download/v1.0.0/swift-mutation-testing-v1.0.0-macos.tar.gz"
