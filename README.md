@@ -22,6 +22,7 @@ brew install <formula>
 |---|---|
 | [swift-cpd](https://github.com/ericodx/swift-cpd) | Detect duplicated code in Swift and Objective-C/C codebases. |
 | [swift-marshal](https://github.com/ericodx/swift-marshal) | Reorder Swift type members without altering logic or formatting. |
+| [swift-mutation-testing](https://github.com/ericodx/swift-mutation-testing) | Find untested behavior in Swift codebases. |
 
 ## Development
 
