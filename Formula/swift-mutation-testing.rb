@@ -13,10 +13,10 @@ class SwiftMutationTesting < Formula
   depends_on :macos
 
   def install
-    bin.install "swift-cpd"
+    bin.install "swift-mutation-testing"
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/swift-cpd --version")
+    assert_match version.to_s, shell_output("#{bin}/swift-mutation-testing --version")
   end
 end
