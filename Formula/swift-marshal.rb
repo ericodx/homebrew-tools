@@ -1,8 +1,8 @@
 class SwiftMarshal < Formula
   desc "Reorder Swift type members without rewriting code"
   homepage "https://github.com/ericodx/swift-marshal"
-  url "https://github.com/ericodx/swift-marshal/releases/download/v1.0.0/swift-marshal-v1.0.0-macos.tar.gz"
-  sha256 "a638fdf8e6494c0bcd266e2050f9833bae645d00ac400c9e5e6b0edbeec9897b"
+  url "https://github.com/ericodx/swift-marshal/releases/download/v1.1.0/swift-marshal-v1.1.0-macos.tar.gz"
+  sha256 "6541ea605ccee2dddcbe2cbb27f0da6164121da21dfdc780662de23d1680b744"
   license "MIT"
 
   livecheck do
