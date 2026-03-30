@@ -1,8 +1,8 @@
 class SwiftCpd < Formula
   desc "Clone & Pattern Detector for Swift and Objective-C/C codebases"
   homepage "https://github.com/ericodx/swift-cpd"
-  url "https://github.com/ericodx/swift-cpd/releases/download/v1.1.2/swift-cpd-v1.1.2-macos.tar.gz"
-  sha256 "9cf63e2cb837c324646e93141187388ce9e47545cb97f6cc694d3c1fd747d7c3"
+  url "https://github.com/ericodx/swift-cpd/releases/download/v1.2.0/swift-cpd-v1.2.0-macos.tar.gz"
+  sha256 "cb29b6b91662fff700962c16a519f7f7d037609df0d28bf74a8607b05f5a0a4d"
   license "MIT"
 
   livecheck do
