@@ -1,8 +1,8 @@
 class SwiftMutationTesting < Formula
   desc "Find untested behavior in Swift codebases"
   homepage "https://github.com/ericodx/swift-mutation-testing"
-  url "https://github.com/ericodx/swift-mutation-testing/releases/download/v1.6.3/swift-mutation-testing-v1.6.3-macos.tar.gz"
-  sha256 "db68be192958bdb48ebac4b5cdf90c26db78fbdfba769d7908a0a3d36003ee3a"
+  url "https://github.com/ericodx/swift-mutation-testing/releases/download/v1.6.4/swift-mutation-testing-v1.6.4-macos.tar.gz"
+  sha256 "c8a0690598766bba4a5f4616f8f99b8909ddf884bbcdb41c83ace62451cd8303"
   license "MIT"
 
   livecheck do
